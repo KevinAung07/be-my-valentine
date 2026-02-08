@@ -97,20 +97,20 @@ export default function Page() {
   const renderFinalPage = () => {
     if (yesPressed) {
       return (
-        <div className="flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center justify-center p-4">
           <img 
-            className="h-[700px]"
+            className="h-[150px] sm:h-[00px] md:h-[300px]"
             src="https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif" 
             alt="Kissing bears" 
           />
-          <div className="my-4 text-4xl font-bold">WOOOOOO!!! I love you babbyyy!! ;))</div>
+          <div className="my-4 text-2xl sm:text-3xl md:text-4xl font-bold text-center">WOOOOOO!!! I love you babbyyy!! ;))</div>
           <button
             onClick={() => {
               setCurrentPage(0);
               setNoCount(0);
               setYesPressed(false);
             }}
-            className="mt-4 rounded-lg bg-pink-500 px-8 py-4 text-2xl font-bold text-white hover:bg-pink-600 transition-all hover:scale-105"
+            className="mt-4 rounded-lg bg-pink-500 px-6 py-3 sm:px-8 sm:py-4 text-lg sm:text-2xl font-bold text-white hover:bg-pink-600 transition-all hover:scale-105"
           >
             Start Over 💕
           </button>
@@ -119,28 +119,28 @@ export default function Page() {
     }
 
     // Shrink image as Yes button grows to keep layout balanced
-    const imageSize = Math.max(500, 300 - noCount * 5);
+    const imageSize = Math.max(600, 250 - noCount * 5);
 
     return (
-      <div className="flex flex-col items-center justify-center px-4">
+      <div className="flex flex-col items-center justify-center px-4 pb-20">
         <img
-          className="object-contain rounded-lg transition-all duration-300"
+          className="object-contain rounded-lg transition-all duration-300 max-h-[30vh] sm:max-h-[40vh]"
           style={{ height: `${imageSize}px` }}
           src={getCurrentNoImage()}
           alt="Please say yes!"
         />
-        <h1 className="my-4 text-2xl md:text-5xl font-bold text-center">Will you be my Girl Friend & my Valentine?</h1>
-        <div className="flex flex-wrap items-center justify-center gap-4">
+        <h1 className="my-3 sm:my-4 text-xl sm:text-3xl md:text-5xl font-bold text-center px-2">Will you be my Girl Friend & my Valentine?</h1>
+        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
           <button
-            className="rounded bg-green-500 px-8 py-4 font-bold text-white hover:bg-green-700 transition-all"
-            style={{ fontSize: yesButtonSize }}
+            className="rounded bg-green-500 px-6 py-3 sm:px-8 sm:py-4 font-bold text-white hover:bg-green-700 transition-all"
+            style={{ fontSize: Math.min(yesButtonSize, 48) }}
             onClick={() => setYesPressed(true)}
           >
             Yes
           </button>
           <button
             onClick={handleNoClick}
-            className="rounded bg-red-500 px-8 py-4 text-2xl font-bold text-white hover:bg-red-700 whitespace-nowrap"
+            className="rounded bg-red-500 px-6 py-3 sm:px-8 sm:py-4 text-lg sm:text-2xl font-bold text-white hover:bg-red-700 whitespace-nowrap"
           >
             {getNoButtonText()}
           </button>
@@ -153,26 +153,26 @@ export default function Page() {
   const renderContentPage = (pageIndex: number) => {
     const page = pages[pageIndex];
     return (
-      <>
+      <div className="flex flex-col items-center justify-center px-4 pb-20 overflow-y-auto">
         <img
-          className="h-[700px] w-auto object-contain rounded-lg"
+          className="h-[150px] sm:h-[250px] md:h-[350px] lg:h-[600px] w-auto object-contain rounded-lg"
           src={page.image}
           alt={page.title}
         />
-        <h1 className="my-4 text-5xl md:text-7xl font-bold text-gray-800">{page.title}</h1>
-        <p className="mb-6 text-2xl md:text-3xl text-gray-600 max-w-lg px-4">{page.subtitle}</p>
+        <h1 className="my-3 sm:my-4 text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 text-center px-2">{page.title}</h1>
+        <p className="mb-4 sm:mb-6 text-base sm:text-xl md:text-2xl text-gray-600 max-w-lg px-4 text-center">{page.subtitle}</p>
         <button
           onClick={nextPage}
-          className="rounded-lg bg-pink-500 px-8 py-4 text-2xl font-bold text-white hover:bg-pink-600 transition-all hover:scale-105"
+          className="rounded-lg bg-pink-500 px-6 py-3 sm:px-8 sm:py-4 text-lg sm:text-2xl font-bold text-white hover:bg-pink-600 transition-all hover:scale-105"
         >
           {page.buttonText}
         </button>
-      </>
+      </div>
     );
   };
 
   return (
-    <div className="-mt-16 flex h-screen flex-col items-center justify-center bg-gradient-to-b from-pink-50 to-white">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-pink-50 to-white overflow-x-hidden">
       {currentPage < pages.length ? (
         // Pages 1-5: Content pages
         renderContentPage(currentPage)
@@ -183,9 +183,9 @@ export default function Page() {
       
       {/* Navigation and page indicator */}
       {!yesPressed && (
-        <div className="fixed bottom-8 flex flex-col items-center gap-4">
+        <div className="fixed bottom-4 sm:bottom-8 flex flex-col items-center gap-2 sm:gap-4 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2">
           {/* Navigation buttons */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-4">
             {/* Home button - go to start */}
             <button
               onClick={() => {
@@ -200,7 +200,7 @@ export default function Page() {
               }`}
               title="Go to start"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5" viewBox="0 0 20 20" fill="currentColor">
                 <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
               </svg>
             </button>
@@ -223,18 +223,18 @@ export default function Page() {
               }`}
               title="Previous page"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" />
               </svg>
             </button>
 
             {/* Page dots */}
-            <div className="flex gap-2">
+            <div className="flex gap-1 sm:gap-2">
               {[...Array(pages.length + 1)].map((_, index) => (
                 <div
                   key={index}
-                  className={`h-2 w-2 rounded-full transition-all ${
-                    index === currentPage ? "bg-pink-500 w-4" : "bg-pink-200"
+                  className={`h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full transition-all ${
+                    index === currentPage ? "bg-pink-500 w-3 sm:w-4" : "bg-pink-200"
                   }`}
                 />
               ))}
@@ -255,7 +255,7 @@ export default function Page() {
               }`}
               title="Next page"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
               </svg>
             </button>

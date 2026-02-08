@@ -7,6 +7,9 @@ export default function Page() {
   const [yesPressed, setYesPressed] = useState(false);
   const yesButtonSize = noCount * 20 + 16;
 
+  // Base path for GitHub Pages deployment
+  const basePath = "/be-my-valentine";
+
   const handleNoClick = () => {
     setNoCount(noCount + 1);
   };
@@ -39,51 +42,51 @@ export default function Page() {
       // Page 1: Why I'd be a good boyfriend
       title: "Why I Would Be a Good Boyfriend for You",
       subtitle: "Let me show you... 💕",
-      image: "/images/page1.jpg",
+      image: `${basePath}/images/page1.jpg`,
       buttonText: "Ok......?",
     },
     {
       // Page 2: Hugs and kisses
       title: "I Will Give You Lots of Hugs and Kisses",
       subtitle: "Unlimited cuddles included! 🤗💋",
-      image: "/images/page2.gif",
+      image: `${basePath}/images/page2.gif`,
       buttonText: "Prove it! 🤨",
     },
     {
       // Page 3: Cooking
       title: "I Will Cook for You Every Day",
       subtitle: "Even though I burned the chicken last time, I'm still a great cook :DD 👨‍🍳🔥",
-      image: "/images/page3.jpg",
+      image: `${basePath}/images/page3.jpg`,
       buttonText: "I'll be the judge of that 👨‍⚖️",
     },
     {
       // Page 4: Fight for you
       title: "I Will Fight All The Evil That Tries to Attack You!",
       subtitle: "I WILL FIGHT FOR YOU. RAHHH!! 💪😤⚔️",
-      image: "/images/page4.jfif",
+      image: `${basePath}/images/page4.jfif`,
       buttonText: "My hero! 🦸‍♂️",
     },
     {
       // Page 5: Always there for you
       title: "I Will Always Be There for You",
       subtitle: "When you're at your lowest moments and need me, I'll be there. When you're at your highest point and need support, I'll be there too. Always. 🥺❤️",
-      image: "/images/page5.jpg",
+      image: `${basePath}/images/page5.jpg`,
       buttonText: "That's so sweet... 🥹",
     },
   ];
 
   // Images for each "No" press on the final page (should match phrases array length)
   const noImages = [
-    "/images/no0.jfif",   // "No"
-    "/images/no1.gif",    // "Are you sure?"
-    "/images/no2.gif",    // "What if I asked really nicely?"
-    "/images/no3.gif",    // "Pretty please"
-    "/images/no4.gif",    // "Ill make you lots of Food :))"
-    "/images/no5.png",    // "What about a Matcha from GREGGS :))"
-    "/images/no6.jfif",   // "I WILL SHOOT MYSELF"
-    "/images/no7.gif",    // "Yep im dead"
-    "/images/no9.jfif",   // ":(((("
-    "/images/no10.jfif",   // "RAHHHH :("
+    `${basePath}/images/no0.jfif`,   // "No"
+    `${basePath}/images/no1.gif`,    // "Are you sure?"
+    `${basePath}/images/no2.gif`,    // "What if I asked really nicely?"
+    `${basePath}/images/no3.gif`,    // "Pretty please"
+    `${basePath}/images/no4.gif`,    // "Ill make you lots of Food :))"
+    `${basePath}/images/no5.png`,    // "What about a Matcha from GREGGS :))"
+    `${basePath}/images/no6.jfif`,   // "I WILL SHOOT MYSELF"
+    `${basePath}/images/no7.gif`,    // "Yep im dead"
+    `${basePath}/images/no9.jfif`,   // ":(((("
+    `${basePath}/images/no10.jfif`,  // "RAHHHH :("
   ];
 
   const getCurrentNoImage = () => {

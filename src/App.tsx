@@ -5,7 +5,7 @@ export default function Page() {
   const [currentPage, setCurrentPage] = useState(0);
   const [noCount, setNoCount] = useState(0);
   const [yesPressed, setYesPressed] = useState(false);
-  const yesButtonSize = noCount * 20 + 16;
+  const yesButtonSize = noCount * 20 + 24;
 
   // Base path for GitHub Pages deployment
   const basePath = "/be-my-valentine";
@@ -97,15 +97,29 @@ export default function Page() {
   const renderFinalPage = () => {
     if (yesPressed) {
       return (
-        <>
-          <img src="https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif" alt="Kissing bears" />
+        <div className="flex flex-col items-center justify-center">
+          <img 
+            className="h-[700px]"
+            src="https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif" 
+            alt="Kissing bears" 
+          />
           <div className="my-4 text-4xl font-bold">WOOOOOO!!! I love you babbyyy!! ;))</div>
-        </>
+          <button
+            onClick={() => {
+              setCurrentPage(0);
+              setNoCount(0);
+              setYesPressed(false);
+            }}
+            className="mt-4 rounded-lg bg-pink-500 px-8 py-4 text-2xl font-bold text-white hover:bg-pink-600 transition-all hover:scale-105"
+          >
+            Start Over 💕
+          </button>
+        </div>
       );
     }
 
     // Shrink image as Yes button grows to keep layout balanced
-    const imageSize = Math.max(120, 200 - noCount * 5);
+    const imageSize = Math.max(500, 300 - noCount * 5);
 
     return (
       <div className="flex flex-col items-center justify-center px-4">
@@ -115,10 +129,10 @@ export default function Page() {
           src={getCurrentNoImage()}
           alt="Please say yes!"
         />
-        <h1 className="my-4 text-2xl md:text-4xl font-bold text-center">Will you be my Girl Friend & my Valentine?</h1>
+        <h1 className="my-4 text-2xl md:text-5xl font-bold text-center">Will you be my Girl Friend & my Valentine?</h1>
         <div className="flex flex-wrap items-center justify-center gap-4">
           <button
-            className="rounded bg-green-500 px-4 py-2 font-bold text-white hover:bg-green-700 transition-all"
+            className="rounded bg-green-500 px-8 py-4 font-bold text-white hover:bg-green-700 transition-all"
             style={{ fontSize: yesButtonSize }}
             onClick={() => setYesPressed(true)}
           >
@@ -126,7 +140,7 @@ export default function Page() {
           </button>
           <button
             onClick={handleNoClick}
-            className="rounded bg-red-500 px-4 py-2 font-bold text-white hover:bg-red-700 whitespace-nowrap"
+            className="rounded bg-red-500 px-8 py-4 text-2xl font-bold text-white hover:bg-red-700 whitespace-nowrap"
           >
             {getNoButtonText()}
           </button>
@@ -141,15 +155,15 @@ export default function Page() {
     return (
       <>
         <img
-          className="h-[200px] w-auto object-contain rounded-lg"
+          className="h-[700px] w-auto object-contain rounded-lg"
           src={page.image}
           alt={page.title}
         />
-        <h1 className="my-4 text-3xl md:text-4xl font-bold text-gray-800">{page.title}</h1>
-        <p className="mb-6 text-lg md:text-xl text-gray-600 max-w-md px-4">{page.subtitle}</p>
+        <h1 className="my-4 text-5xl md:text-7xl font-bold text-gray-800">{page.title}</h1>
+        <p className="mb-6 text-2xl md:text-3xl text-gray-600 max-w-lg px-4">{page.subtitle}</p>
         <button
           onClick={nextPage}
-          className="rounded-lg bg-pink-500 px-6 py-3 text-lg font-bold text-white hover:bg-pink-600 transition-all hover:scale-105"
+          className="rounded-lg bg-pink-500 px-8 py-4 text-2xl font-bold text-white hover:bg-pink-600 transition-all hover:scale-105"
         >
           {page.buttonText}
         </button>
